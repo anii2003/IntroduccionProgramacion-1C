@@ -1,0 +1,52 @@
+Inicio
+	// Declaración e inicialización de variables
+	n, i, nd, mayor, aux, i[0-n]
+	n ← 0; nd ← 0; mayor ← 0; aux ← 0
+
+	// Solicitar el límite del vector
+	<<"Ingrese el tamaño del vector: "
+	>>n
+
+	// Declarar el vector
+	A[n],i[0-n]
+
+	// Ingresar los datos del vector
+
+	Para (i←0; i<n; i++) hacer
+		<<"Ingrese el elemento A[",+i,"]: "
+		>>A[i]
+	Fin_Para
+
+	// Determinar el número de cifras de cada valor almacenado
+	
+	Para (i←0;i<n;i++) hacer
+
+		Si (A[i]<0) entonces
+			A[i] ← -A[i]
+		Fin_Si
+
+		Si (A[i]==0) entonces
+			nd ← 1;
+		Fin_Si
+
+		nd ← 0
+
+		Mientras (A[i]>0) hacer
+			A[i] ← A[i]/10
+			nd ← nd + 1
+		Fin_Mientras
+
+		<<"A[",+i,"] tiene ",+nd," digitos"
+
+		Si (nd > mayor) entonces
+			mayor ← nd
+			aux ← i
+		Fin_Si
+
+	Fin_Para
+
+	<<"El número con mayor cantidad de dígitos se encuentra en la posición A[",+aux,"]"
+
+Fin
+
+
