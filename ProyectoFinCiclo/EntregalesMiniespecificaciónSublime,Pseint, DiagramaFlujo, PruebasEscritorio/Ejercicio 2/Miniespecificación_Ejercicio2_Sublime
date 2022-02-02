@@ -1,0 +1,94 @@
+Inicio
+	// Declarar e inicializar las variables
+	n, i, j, k, l, i[0-n]
+	dig, suma, prom, Pdec, d[0-n]
+
+	n ← 5; prom ← 0; dig ← 0; suma ← 0; k ← 0; l ← 0; Pdec ← 0
+
+	// Declarar las matrices
+	A[n][n], i[0-n]
+	B[n][n], i[0-n]
+
+	// Ingresar los elementos de la matriz A
+	Para (i←0; i<n; i++) hacer
+		Para (j←0; j<n; j++) hacer
+			<<"Ingrese el elemento A[",+i,"][",+j,"] = "
+			>>A[i][j]
+		Fin_Para
+	Fin_Para
+
+	// Ingresar los elementos de la matriz B	
+	Para (i←0; i<n; i++) hacer
+		Para (j←0; j<n; j++) hacer
+			<<"Ingrese el elemento B[",+i,"][",+j,"] = "
+			>>B[i][j]
+		Fin_Para
+	Fin_Para
+
+	// Mostrar la matriz A
+	<<"***MATRIZ A***"
+	Para (i←0; i<n; i++) hacer
+		Para (j←0; j<n; j++) hacer
+			<<A[i][j],"  "
+		Fin_Para
+		<<"  "
+	Fin_Para
+
+	// Mostrar la matriz B
+	<<"***MATRIZ B***"
+	Para (i←0; i<n; i++) hacer
+		Para (j←0; j<n; j++) hacer
+			<<B[i][j],"  "
+		Fin_Para
+		<<"  "
+	Fin_Para
+
+	// Determinar cuáles números terminan en 4 y promedio de los mismos.
+	
+	Para (i←0; i<n; i++) hacer
+
+		Para (j←0; j<n; j++) hacer
+			
+			dig ← A[i][j] % 10
+
+			Si (dig == 4) entonces
+				<<"A[",+i,"][",+j,"] termina en 4"
+				k ← k + 1
+				suma ← suma + A[i][j]
+			Fin_Si
+
+		Fin_Para
+
+	Fin_Para
+
+	prom ← suma/k
+
+	Si (prom % 1 != 0) entonces  //Si el promedio es decimal su operación con MOD 1, dará diferente de 0, por tanto solo tomaremos la parte entera.
+		Pdec ← prom % 1
+		prom ← prom - Pdec
+	Fin_Si
+
+
+	<<"El promedio de los números terminados en 4 es: ",+prom
+
+	// Verificar si este promedio se encuentra al menos 3 veces en la matriz B
+
+	Para (i←0; i<n; i++) hacer
+		Para (j←0; j<n; j++) hacer
+			Si (B[i][j] == prom) entonces
+				l ← l + 1
+			Fin_Si
+		Fin_Para
+	Fin_Para
+
+	<<"El promedio",+prom," se ha encontrado ",+l," veces en la matriz B"
+
+	Si (l >= 3) entonces
+		<<"El promedio de los números terminados en 4 de la matriz A si se repite al menos 3 veces en la matriz B"
+
+	Sino
+		<<"El promedio de los números terminados en 4 de la matriz A NO se repite al menos 3 veces en la matriz B"
+	Fin_Si
+
+Fin
+
